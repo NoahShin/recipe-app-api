@@ -22,7 +22,8 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Build the stack
-      run: docker-compose up -d  
+      run: |
+        docker-compose up -d
     - name: Run Tests
       run: |
-         docker-compose run app sh -c "python manage.py wait_for_db && python manage.py test && flake8"
+        docker-compose run app sh -c "python manage.py wait_for_db && python manage.py test && flake8"
